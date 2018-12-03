@@ -19,7 +19,7 @@ function compStr(str){
     }
   }
   return matches;
-}
+};
 
 function modStr(str){
   let newStr = str;
@@ -28,6 +28,21 @@ function modStr(str){
     if (prob < mut){
       newStr = newStr.substring(0, i) + alphabet.charAt(Math.floor(Math.random() * alphabet.length))
               + newStr.substring(i+1, str.length);
+    }
+  }
+  return newStr;
+};
+
+// the same func as modStr but letters which are correct can't mutate. To use this - change line 60
+function modStrLock(str){
+  let newStr = str;
+  for (let i = 0; i < str.length; i++){
+    if(newStr[i] !== target[i]){
+      const prob = Math.floor(Math.random() * 100);
+      if (prob < mut){
+        newStr = newStr.substring(0, i) + alphabet.charAt(Math.floor(Math.random() * alphabet.length))
+                + newStr.substring(i+1, str.length);
+      }
     }
   }
   return newStr;
@@ -51,6 +66,7 @@ while (!strFound){
   }
   startStr = strList[matchesList.indexOf(maxMatch)];
   resultList.push(loopNumber + ': ' + startStr + ' |matches: ' + maxMatch);
+  loopNumber += 1;
 };
 
 for (let i = 0; i < resultList.length; i++){
