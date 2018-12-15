@@ -4,7 +4,7 @@ const copies = 100;
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ ';
 
 function genStr(){
-  let str ='';
+  let str = '';
   for (let i = 0; i < target.length; i++){
     str += alphabet[Math.floor(Math.random() * alphabet.length)]
   }
